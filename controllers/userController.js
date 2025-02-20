@@ -1,4 +1,4 @@
-const {createUser,getUserByEmail} = require('../db/user')
+const {createUser,getUserByEmail,getAllUsers} = require('../db/user')
 
 const login_utils = require('../utils/login')
 
@@ -20,6 +20,17 @@ exports.signup = (req,res) => {
  createUser(data.name, data.email ,data.password).then(user => {
   let token = login_utils.token(data)
     res.send({key: token})
+ }).catch(err => {
+    res.status(400).json({message: 'Error creating user'})
+ })
+ 
+}
+
+
+exports.getAllUsers = (req,res) => {
+ const data = req.query
+ getAllUsers().then(users =>{
+  res.json({users: users})
  }).catch(err => {
     res.status(400).json({message: 'Error creating user'})
  })

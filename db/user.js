@@ -19,3 +19,13 @@ exports.getUserByEmail = (email) =>{
        else resolve(result[0])
      })
    })}
+
+
+
+exports.getAllUsers = () =>{
+   return new Promise((resolve, reject) =>{
+     db.query('SELECT * FROM users', (err, result) => {
+       if(err) reject(err)
+       else resolve(result)
+     })
+   })}
