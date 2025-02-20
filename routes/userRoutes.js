@@ -4,12 +4,13 @@ const router = express.Router()
 const {login, signup} = require('../controllers/userController')
 // Define the routes
 
-router.get('/', (req,res) =>{
+router.post('/', (req,res) =>{
+
     res.send('welcome guest user try to login')
 })
 
 
-router.get('/login', login)
+router.post('/login/', login)
 
 
 
