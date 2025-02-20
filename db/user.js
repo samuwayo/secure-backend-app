@@ -4,7 +4,7 @@ const db = require('./db')
 
 exports.createUser = (u_name,email,password) =>{
    return new Promise((resolve, reject) =>{
-     db.query('INSERT INTO users (u_name, email, password) VALUES (?,?,?)', [u_name, email, password], (err, result) => {
+     db.query('INSERT INTO users (name, email, password) VALUES (?,?,?)', [u_name, email, password], (err, result) => {
        if(err) reject(err)
        else resolve(result)
      })
